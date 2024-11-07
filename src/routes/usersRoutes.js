@@ -7,6 +7,7 @@ const userRoutesInit = (app) => {
   app.get("/users", userController.getUsers); // Para obter os usuários
   app.post("/users", userController.postUser); // Para criar um novo usuário
   app.delete("/users", userController.deleteUser); // Para deletar todos os usuários
+  app.post("/feedback", userController.postFeedback);
   app.patch("/update", validateToken, userController.updateUser); // Para atualizar um usuário
 };
 

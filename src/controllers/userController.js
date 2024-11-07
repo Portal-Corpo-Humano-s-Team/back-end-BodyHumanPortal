@@ -1,4 +1,5 @@
 import user from "../models/User.js";
+import Feedback from "../models/Feedback.js";
 import nodemailer from "nodemailer";
 import emailController from "./emailController.js";
 import bcrypt from "bcrypt";
@@ -109,6 +110,26 @@ class userController {
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Erro ao atualizar informações." });
+    }
+  }
+
+  static async postFeedback(req, res) {
+    console.log("Requisição recebida:", req.body);
+    try {
+      const { name, phoneNumber, email, navegationScore, appearanceScore } = req.body;
+
+      const newFeedback = await Feedback.create({
+        name,
+        email,
+        phoneNumber,
+        navegationScore,
+        appearanceScore,
+      });
+
+      res.status(201).json({ message: "User created successfully" + newFeedback });
+    } catch (error) {
+      console.error("Erro ao criar usuário:", error); // Adicione esta linha para logar erros
+      res.status(500).json({ message: `${error.message} - Create user failed` });
     }
   }
 }
