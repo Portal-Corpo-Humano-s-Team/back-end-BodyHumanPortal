@@ -10,6 +10,8 @@ const routes = (app) => {
   // Rota principal para testar se o servidor está funcionando
   app.route("/health-check").get((req, res) => res.status(200).send("Server's Running"));
 
+  app.route("/").get((req, res) => res.status(200).send("Hello"));
+
   userRoutesInit(app);
   loginRoutesInit(app);
   emailRoutesInit(app);

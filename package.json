@@ -1,13 +1,14 @@
 {
-  "name": "jwt-authentication",
+  "name": "body-human-portal",
   "version": "1.0.0",
-  "description": "login: admin password: admin123",
+  "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": ""
   },
   "keywords": [],
   "author": "",
