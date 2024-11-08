@@ -11,7 +11,7 @@
     "build": "npm run build"
   },
   "engines": {
-    "node": "14.x"
+    "node": "19.x"
   },
   "keywords": [],
   "author": "",
