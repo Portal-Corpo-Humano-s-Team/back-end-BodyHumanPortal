@@ -83,9 +83,9 @@ class emailController {
       }
 
       // Pega o array de e-mails enviados e ordena pela data de envio
-      const emailsEnviados = userFound.emailsEnviados.sort((a, b) => b.dateSent - a.dateSent).slice(0, 4); // Limita a 8 e-mails mais recentes
+      const emailsEnviados = userFound.emailsEnviados.sort((a, b) => b.dateSent - a.dateSent).slice(0, 4);
 
-      res.json(emailsEnviados);
+      res.status(200).json(emailsEnviados);
     } catch (error) {
       res.status(500).json({ message: "Erro ao buscar e-mails." });
     }

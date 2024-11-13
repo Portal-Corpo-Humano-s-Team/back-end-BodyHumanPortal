@@ -8,9 +8,7 @@ const routes = (app) => {
   app.use(express.json());
 
   // Rota principal para testar se o servidor está funcionando
-  app.route("/health-check").get((req, res) => res.status(200).send("Server's Running"));
-
-  app.route("/").get((req, res) => res.status(200).send("Hello"));
+  app.route("/").get((req, res) => res.status(200).send("Server's Running"));
 
   userRoutesInit(app);
   loginRoutesInit(app);
