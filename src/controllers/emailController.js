@@ -4,7 +4,7 @@ import SMTP from "../config/smtp.js";
 import { text } from "express";
 
 class emailController {
-  static async sendEmail({ to, subject, message }) {
+  static async sendEmail({ to, subject, message }) { //send email
     try {
       const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -34,13 +34,13 @@ class emailController {
     }
   }
 
-  static async sendWelcomeEmail(req, res) {
+  static async sendWelcomeEmail(req, res) { //send welcome email
     const subject = "Bem-vindo ao nosso sistema!";
     const message = `Olá ${req.body.email},\n\nSeja bem-vindo ao Portal do Corpo Humano! Estamos felizes por tê-lo conosco.`;
     await this.sendEmail({ to: req.body.email, subject, message });
   }
 
-  static async sendNotificationEmail(req, res) {
+  static async sendNotificationEmail(req, res) { //???
     try {
       console.log("Requisição recebida:", req.body);
 
@@ -71,7 +71,7 @@ class emailController {
     }
   }
 
-  static async emailsSent(req, res) {
+  static async emailsSent(req, res) { //last four emails
     const email = req.user.email;
 
     try {

@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const key = "59b8fd20-b60e-4637-a035-483f989c21fe";
 
-function validateToken(req, res, next) {
+function validateToken(req, res, next) {//validate token
   try {
     const authHeader = req.headers["authorization"];
 

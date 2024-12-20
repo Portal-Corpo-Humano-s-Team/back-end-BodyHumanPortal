@@ -7,7 +7,7 @@ import SMTP from "../config/smtp.js";
 import { text } from "express";
 
 class userController {
-  static async getLoggedUser(req, res) {
+  static async getLoggedUser(req, res) { //login 
     try {
       const getedUsers = await user.findOne({ email: req.user.email });
       res.status(200).json(getedUsers);
@@ -16,7 +16,7 @@ class userController {
     }
   }
 
-  static async getUsers(req, res) {
+  static async getUsers(req, res) { //all users
     try {
       const getedUsers = await user.find({});
       res.status(200).json({ message: "Users finded sucefully", Users: getedUsers });
@@ -25,7 +25,7 @@ class userController {
     }
   }
 
-  static async postUser(req, res) {
+  static async postUser(req, res) { //create user
     console.log("Requisição recebida:", req.body);
     try {
       const { email, name, birthday, password } = req.body;
@@ -50,7 +50,7 @@ class userController {
     }
   }
 
-  static async encryptPassword(password) {
+  static async encryptPassword(password) { //encrypt the password
     const saltRounds = 10; // Define o custo da geração do salt (número de iterações)
 
     try {
@@ -67,7 +67,7 @@ class userController {
     }
   }
 
-  static async deleteUser(req, res) {
+  static async deleteUser(req, res) { //delete user
     try {
       const deletedUsers = await user.deleteMany({});
       res.status(201).json({ message: "Deleted users successfully", deletedCount: deletedUsers.deletedCount });
@@ -75,8 +75,8 @@ class userController {
       res.status(500).json({ message: `${error.message} - Delete users failed` });
     }
   }
-
-  static async updateUser(req, res) {
+ 
+  static async updateUser(req, res) { //update user
     const { email, newPassword, currentPassword } = req.body;
 
     try {
@@ -113,7 +113,7 @@ class userController {
     }
   }
 
-  static async postFeedback(req, res) {
+  static async postFeedback(req, res) { //post feedback
     console.log("Requisição recebida:", req.body);
     try {
       const { name, phoneNumber, email, navegationScore, appearanceScore } = req.body;
@@ -126,10 +126,10 @@ class userController {
         appearanceScore,
       });
 
-      res.status(201).json({ message: "User created successfully" + newFeedback });
+      res.status(201).json({ message: "Feedback sent successfully" + newFeedback });
     } catch (error) {
-      console.error("Erro ao criar usuário:", error); // Adicione esta linha para logar erros
-      res.status(500).json({ message: `${error.message} - Create user failed` });
+      console.error("Erro ao enviar feedback:", error); // Adicione esta linha para logar erros
+      res.status(500).json({ message: `${error.message} - Feedback sent failed` });
     }
   }
 }

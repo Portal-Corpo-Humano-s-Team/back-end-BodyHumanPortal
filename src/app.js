@@ -15,7 +15,7 @@ dbConnection.on("error", (error) => {
 });
 
 dbConnection.once("open", () => {
-  console.log("Conexão com o banco feita com sucesso");
+  console.log("Conexão com o banco feita com sucesso!");
 });
 
 export default app;

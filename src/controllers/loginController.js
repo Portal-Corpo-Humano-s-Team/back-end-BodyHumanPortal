@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 const key = "59b8fd20-b60e-4637-a035-483f989c21fe";
 
 class loginRoutesInitController {
-  static async login(req, res) {
+  static async login(req, res) { //login
     try {
       const { email, password } = req.body || {};
 
