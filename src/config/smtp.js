@@ -1,6 +1,7 @@
 const SMTP = {
-  user: "portalcorpohumano@gmail.com", // Seu email do Gmail
-  pass: "icjy iuzs vhgh tlyk", // Substitua pela senha de aplicativo do Gmail
+  host: process.env.SMTP_HOST,
+  user: process.env.SMTP_USER, // Seu email do Gmail
+  pass: process.env.SMTP_PASS, // Substitua pela senha de aplicativo do Gmail
   from: "portalcorpohumano@gmail.com", // Email remetente
 };
 

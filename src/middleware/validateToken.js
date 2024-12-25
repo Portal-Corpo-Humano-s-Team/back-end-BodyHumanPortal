@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
-const key = "59b8fd20-b60e-4637-a035-483f989c21fe";
+const key = process.env.JWT_KEY || "token-key";
 
-function validateToken(req, res, next) {
+function validateJwtToken(req, res, next) {
   try {
     const authHeader = req.headers["authorization"];
 
@@ -11,19 +11,20 @@ function validateToken(req, res, next) {
       return res.status(401).json({ message: "Token não fornecido ou mal formatado" });
     }
 
-    const token = authHeader.split(" ")[1]; // Remove o 'Bearer ' e mantém apenas o token
+    const token = authHeader.split(" ")[1];
 
-    // Aqui, você vai validar o token com sua chave secreta
+    console.log(token);
     jwt.verify(token, key, (err, user) => {
       if (err) {
+        console.error(err);
         return res.status(403).json({ message: "Token inválido ou expirado" });
       }
       req.user = user;
-      next(); // Continua para o próximo middleware ou rota
+      next();
     });
   } catch (error) {
     console.log(error);
   }
 }
 
-export default validateToken;
+export default validateJwtToken;
