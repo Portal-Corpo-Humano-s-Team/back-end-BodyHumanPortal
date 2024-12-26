@@ -19,13 +19,13 @@ model User {
   email    String   @unique
   birthday DateTime @default(now())
   password String   
-  emails   Email[]  
-}
+  emails   Email[]  @relation("UserEmails")
+  }
 
 model Email {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   userId   String   @db.ObjectId 
-  user     User     @relation(fields: [userId], references: [id])
+  user     User     @relation("UserEmails",fields: [userId], references: [id], onDelete: Cascade)
   to       String
   subject  String
   message  String
