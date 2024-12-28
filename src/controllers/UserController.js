@@ -10,7 +10,7 @@ export default class UserController {
         return res.status(400).json({ error: "Todos os campos são obrigatórios." });
       }
 
-      const user = await UserService.createUser({ name, email, password });
+      const user = await UserService.createUser({ name, email, birthday, password });
       console.log(user.id);
       EmailService.sendWelcomeEmail({ name, email, userId: user.id });
 
@@ -50,9 +50,9 @@ export default class UserController {
   static async deleteUser(req, res) {
     try {
       await UserService.deleteUser(req.params.id);
-      res.status(204).send({ Message: "Usuário deletado com sucesso" }); // No Content
+      res.status(200).send({ message: "Usuário deletado com sucesso" });
     } catch (error) {
-      res.status(500).json({ error: "Erro ao deletar usuário" });
+      res.status(500).json({ message: "Erro ao deletar usuário", error: error.message });
     }
   }
 }

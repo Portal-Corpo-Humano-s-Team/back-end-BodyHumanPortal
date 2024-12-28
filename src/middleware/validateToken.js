@@ -6,7 +6,6 @@ function validateJwtToken(req, res, next) {
   try {
     const authHeader = req.headers["authorization"];
 
-    // Verifica se o header Authorization existe e começa com 'Bearer '
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({ message: "Token não fornecido ou mal formatado" });
     }
@@ -14,10 +13,9 @@ function validateJwtToken(req, res, next) {
     const token = authHeader.split(" ")[1];
 
     console.log(token);
-    jwt.verify(token, key, (err, user) => {
+    jwt.verify(token, key, (error, user) => {
       if (err) {
-        console.error(err);
-        return res.status(403).json({ message: "Token inválido ou expirado" });
+        return res.status(403).json({ message: "Token inválido ou expirado", error: error.message });
       }
       req.user = user;
       next();

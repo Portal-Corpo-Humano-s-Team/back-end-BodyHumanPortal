@@ -2,7 +2,6 @@ import AuthController from "../controllers/AuthController.js";
 import validateJwtToken from "../middleware/validateToken.js";
 
 const authRoutesInit = (app) => {
-  // Rota pública para login
   app.post("/login", AuthController.login);
 
   // Rotas protegidas, onde o token é obrigatório

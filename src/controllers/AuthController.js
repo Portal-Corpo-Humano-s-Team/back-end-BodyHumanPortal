@@ -17,7 +17,7 @@ export default class AuthController {
       });
     } catch (error) {
       console.error("Erro no login:", error.message);
-      return res.status(401).json({ message: error.message });
+      return res.status(401).json({ message: "Erro no login:", error: error.message });
     }
   }
 }

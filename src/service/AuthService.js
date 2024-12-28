@@ -1,18 +1,11 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../config/connectDb.js";
 
-const prisma = new PrismaClient();
 const JWT_KEY = process.env.JWT_KEY || "chave_secreta";
 console.log();
 
 export default class AuthService {
-  /**
-   * @param {string} email - Email do usuário
-   * @param {string} password - Senha do usuário
-   * @returns {Promise<object>} - Token JWT e dados do usuário autenticado
-   * @throws {Error} - Caso o usuário ou a senha sejam inválidos
-   */
   static async login(email, password) {
     // Verifica se o usuário existe pelo email
     const user = await prisma.user.findUnique({ where: { email } });

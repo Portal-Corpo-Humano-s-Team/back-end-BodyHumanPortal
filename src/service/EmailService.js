@@ -1,24 +1,11 @@
-import { PrismaClient } from "@prisma/client";
-import SMTP from "../config/smtp.js";
+import { SMTP, payloadTransporter } from "../config/payloadEmailTransporter.js";
 import { generateTemplateWelcomeEmail } from "../templates/emailTemplate.js";
 import nodemailer from "nodemailer";
-
-const prisma = new PrismaClient();
+import { prisma } from "../config/connectDb.js";
 
 export default class EmailService {
   static async sendEmail({ to, subject, message, userId }) {
-    const transporter = nodemailer.createTransport({
-      host: SMTP.host,
-      port: SMTP.port,
-      secure: false,
-      auth: {
-        user: SMTP.user,
-        pass: SMTP.pass,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
+    const transporter = nodemailer.createTransport(payloadTransporter);
 
     const mailSent = await transporter.sendMail({
       from: SMTP.from,
