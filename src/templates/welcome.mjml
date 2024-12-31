@@ -1,0 +1,67 @@
+<mjml>
+  <mj-head>
+    <mj-title>Bem-vindo(a) ao Portal do Corpo Humano</mj-title>
+    <mj-preview>Estamos felizes em tê-lo(a) conosco!</mj-preview>
+    <mj-font name="Roboto" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <mj-style>
+      .button { background-color: #4CAF50; color: white; text-decoration: none; font-weight: bold; padding: 10px 20px;
+      border-radius: 5px; }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-section background-color="#f4f4f4" padding="20px 0">
+      <mj-column>
+        <mj-text
+          font-family="Roboto, Arial, sans-serif"
+          align="center"
+          font-size="20px"
+          color="#333"
+          font-weight="bold"
+        >
+          Bem-vindo(a) ao Portal do Corpo Humano!
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding="20px">
+      <mj-column>
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#333"> Olá {{ name }}, </mj-text>
+
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
+          Estamos muito felizes que você decidiu se juntar a nós! O Portal do Corpo Humano é o lugar perfeito para
+          explorar informações detalhadas sobre o corpo humano, suas funcionalidades, e muito mais.
+        </mj-text>
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
+          Aqui estão alguns recursos que você pode aproveitar:
+        </mj-text>
+        <mj-list font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555">
+          <mj-list-item>Acesso a conteúdos exclusivos;</mj-list-item>
+          <mj-list-item>Informações detalhadas sobre o corpo humano;</mj-list-item>
+          <mj-list-item>Ferramentas interativas para aprendizado.</mj-list-item>
+        </mj-list>
+        <mj-button
+          href="https://front-end-body-human-portal.vercel.app/"
+          font-family="Roboto, Arial, sans-serif"
+          background-color="#4CAF50"
+          color="white"
+          border-radius="5px"
+          padding="15px"
+        >
+          Comece a explorar
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#f4f4f4" padding="20px 0">
+      <mj-column>
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="14px" color="#999" align="center">
+          Se você tiver dúvidas, entre em contato conosco via e-mail em
+          <a href="mailto:portalcorpohumano@gmail.com" style="color: #4caf50">portalcorpohumano@gmail.com</a>.
+        </mj-text>
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="14px" color="#999" align="center">
+          © 2024 Portal do Corpo Humano. Todos os direitos reservados.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

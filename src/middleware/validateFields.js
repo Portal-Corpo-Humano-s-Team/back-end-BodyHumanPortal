@@ -1,15 +1,20 @@
 import schema from "../prisma/schema.js";
+import { fieldValidators } from "../validations/validateFields.js";
+
+const { isRequiredField, isIdValue, isRelationField, isAutoIncrement } = fieldValidators;
 
 export const validateRequiredField = (modelName) => (req, res, next) => {
   try {
-    const payload = { ...req.params, ...req.body };
-
+    const payload = { ...req.user, ...req.params, ...req.body };
+    console.log(payload);
     const model = schema.models.find((m) => modelName === m.name);
     if (!model) {
       return res.status(400).json({ error: `Model '${modelName}' not found.` });
     }
 
-    const requiredModelFields = model.fields.filter((f) => f.required && !f.defaultValue?.includes("auto"));
+    const requiredModelFields = model.fields.filter(
+      (f) => isRequiredField(f) && !isRelationField(f) && !isIdValue(f) && !isAutoIncrement(f)
+    );
 
     const payloadFields = Object.keys(payload);
 

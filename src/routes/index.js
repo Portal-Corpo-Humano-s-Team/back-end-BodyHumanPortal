@@ -5,8 +5,6 @@ import authRoutesInit from "./authRoutes.js";
 import emailRoutesInit from "./emailRoutes.js";
 
 const routes = (app) => {
-  app.use(express.json());
-
   app.route("/").get((req, res) => res.status(200).send("Server's Running"));
   app.use("/auth/", validateJwtToken);
 

@@ -12,7 +12,7 @@ export default class UserController {
 
       const user = await UserService.createUser({ name, email, birthday, password });
       console.log(user.id);
-      EmailService.sendWelcomeEmail({ name, email, userId: user.id });
+      EmailService.sendWelcomeEmail({ name, email, userId: user.id }, user);
 
       return res.status(201).json({ message: "Usuário criado com sucesso!", user });
     } catch (error) {

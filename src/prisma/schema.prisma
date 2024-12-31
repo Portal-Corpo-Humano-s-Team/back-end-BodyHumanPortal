@@ -17,17 +17,16 @@ model User {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   name     String
   email    String   @unique
-  birthday DateTime @default(now())
+  birthday DateTime 
   password String   
   emails   Email[]  @relation("UserEmails")
   }
 
 model Email {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId   String   @db.ObjectId 
+  userId   String   @db.ObjectId @map("_userId") 
   user     User     @relation("UserEmails",fields: [userId], references: [id], onDelete: Cascade)
   to       String
   subject  String
-  message  String
   dateSent DateTime @default(now())
 }

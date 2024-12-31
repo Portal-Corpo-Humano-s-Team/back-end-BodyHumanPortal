@@ -43,7 +43,6 @@ export default {
           type: 'DateTime',
           isId: false,
           unique: false,
-          defaultValue: 'now()',
           list: false,
           required: true,
           kind: 'scalar',
@@ -100,6 +99,7 @@ export default {
           required: true,
           kind: 'scalar',
           documentation: '',
+          map: '_userId',
           relationField: true,
         },
         {
@@ -140,17 +140,6 @@ export default {
           relationField: false,
         },
         {
-          name: 'message',
-          type: 'String',
-          isId: false,
-          unique: false,
-          list: false,
-          required: true,
-          kind: 'scalar',
-          documentation: '',
-          relationField: false,
-        },
-        {
           name: 'dateSent',
           type: 'DateTime',
           isId: false,
@@ -164,7 +153,7 @@ export default {
         },
       ],
       documentation:
-        '  }\n  emails   Email[]  @relation("UserEmails")\n  password String   \n  birthday DateTime @default(now())\n  email    String   @unique\n  name     String\n  id       String   @id @default(auto()) @map("_id") @db.ObjectId\nmodel User {',
+        '  }\n  emails   Email[]  @relation("UserEmails")\n  password String   \n  birthday DateTime \n  email    String   @unique\n  name     String\n  id       String   @id @default(auto()) @map("_id") @db.ObjectId\nmodel User {',
     },
   ],
   enums: [],

@@ -1,3 +1,4 @@
+import { resolveContent } from "nodemailer/lib/shared/index.js";
 import UserController from "../controllers/UserController.js";
 import { validateRequiredField } from "../middleware/validateFields.js";
 
