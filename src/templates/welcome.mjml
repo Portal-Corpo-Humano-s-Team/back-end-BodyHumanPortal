@@ -34,11 +34,17 @@
         <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
           Aqui estão alguns recursos que você pode aproveitar:
         </mj-text>
-        <mj-list font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555">
-          <mj-list-item>Acesso a conteúdos exclusivos;</mj-list-item>
-          <mj-list-item>Informações detalhadas sobre o corpo humano;</mj-list-item>
-          <mj-list-item>Ferramentas interativas para aprendizado.</mj-list-item>
-        </mj-list>
+
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
+          - Acesso a conteúdos exclusivos;
+        </mj-text>
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
+          - Informações detalhadas sobre o corpo humano;
+        </mj-text>
+        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
+          - Ferramentas interativas para aprendizado.
+        </mj-text>
+
         <mj-button
           href="https://front-end-body-human-portal.vercel.app/"
           font-family="Roboto, Arial, sans-serif"
