@@ -1,4 +1,6 @@
-export default {
+import { SchemaObject } from '@paljs/types'
+
+export const schema: SchemaObject = {
   models: [
     {
       name: 'User',
@@ -108,7 +110,7 @@ export default {
           isId: false,
           unique: false,
           list: false,
-          required: true,
+          required: false,
           kind: 'object',
           documentation: '',
           relation: {
@@ -118,24 +120,13 @@ export default {
           },
         },
         {
-          name: 'to',
-          type: 'String',
+          name: 'templateEmail',
+          type: 'ETemplateEmail',
           isId: false,
           unique: false,
           list: false,
           required: true,
-          kind: 'scalar',
-          documentation: '',
-          relationField: false,
-        },
-        {
-          name: 'subject',
-          type: 'String',
-          isId: false,
-          unique: false,
-          list: false,
-          required: true,
-          kind: 'scalar',
+          kind: 'enum',
           documentation: '',
           relationField: false,
         },
@@ -152,11 +143,10 @@ export default {
           relationField: false,
         },
       ],
-      documentation:
-        '  }\n  emails   Email[]  @relation("UserEmails")\n  password String   \n  birthday DateTime \n  email    String   @unique\n  name     String\n  id       String   @id @default(auto()) @map("_id") @db.ObjectId\nmodel User {',
+      documentation: '',
     },
   ],
-  enums: [],
+  enums: [{ name: 'ETemplateEmail', fields: ['WELCOME', 'SUPPORT', 'OTHER'] }],
   dataSource: { provider: 'mongodb', url: 'env("DB_CONNECTION_STRING")' },
   generators: [{ name: 'client', provider: 'prisma-client-js' }],
 }

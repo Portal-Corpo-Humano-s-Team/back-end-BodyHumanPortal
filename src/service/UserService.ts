@@ -1,19 +1,21 @@
 import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
-import { prisma } from "../config/connectDb.js";
+import { prisma } from "../config/connectDb.ts";
+import { IUser } from "../types/userTypes.ts";
+import { ValidationError } from "../validations/CustomValidation.ts";
 
 export default class UserService {
-  static async createUser(payload = {}) {
+  static async createUser(payload): Promise<IUser> {
     const { name, email, password, birthday } = payload;
 
-    if (await prisma.User.findUnique({ where: { email } })) {
-      throw new Error("Email já cadastrado");
+    if (await prisma.user.findUnique({ where: { email } })) {
+      throw new ValidationError("Email já cadastrado");
     }
 
     const formattedDate = new Date(`${birthday}T00:00:00Z`).toISOString();
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await prisma.User.create({
+    const user: IUser = await prisma.user.create({
       data: {
         name,
         email,
@@ -31,18 +33,19 @@ export default class UserService {
   }
 
   static async getAllUsers() {
-    return prisma.User.findMany({
+    return prisma.user.findMany({
       select: {
         id: true,
         name: true,
         email: true,
         birthday: true,
+        emails: true,
       },
     });
   }
 
   static async getUserById(userId) {
-    return prisma.User.findUnique({
+    const user = prisma.user.findUnique({
       where: { id: userId },
       select: {
         id: true,
@@ -51,36 +54,39 @@ export default class UserService {
         birthday: true,
       },
     });
+
+    if (!user) throw new ValidationError("Usuário não encontrado");
+    return user;
   }
 
-  static async updateUser(userId, payload = {}) {
+  static async updateUser(userId: IUser["id"], payload: IUser) {
     if (!ObjectId.isValid(userId)) {
-      throw new Error("ID inválido: o ID fornecido não é um ObjectId válido.");
+      throw new ValidationError("ID inválido: o ID fornecido não é um ObjectId válido.");
     }
 
     if (!userId) {
-      throw new Error("ID Inválido: usuário não encontrado.");
+      throw new ValidationError("ID Inválido: usuário não encontrado.");
     }
 
-    return prisma.User.update({
+    return prisma.user.update({
       where: { id: userId },
-      payload,
+      data: payload,
     });
   }
 
   static async deleteUser(userId) {
-    const userExists = await prisma.User.findUnique({
+    const userExists = await prisma.user.findUnique({
       where: { id: userId },
     });
 
     if (!ObjectId.isValid(userId)) {
-      throw new Error("ID inválido: o ID fornecido não é um ObjectId válido.");
+      throw new ValidationError("ID inválido: o ID fornecido não é um ObjectId válido.");
     }
     if (!userExists) {
-      throw new Error("ID Inválido: usuário não encontrado.");
+      throw new ValidationError("ID Inválido: usuário não encontrado.");
     }
 
-    return prisma.User.delete({
+    return prisma.user.delete({
       where: { id: userId },
     });
   }

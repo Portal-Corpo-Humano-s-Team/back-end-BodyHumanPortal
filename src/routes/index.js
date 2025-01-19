@@ -6,7 +6,7 @@ import emailRoutesInit from "./emailRoutes.js";
 
 const routes = (app) => {
   app.route("/").get((req, res) => res.status(200).send("Server's Running"));
-  app.use("/auth/", validateJwtToken);
+  app.use("/auth", validateJwtToken);
 
   userRoutesInit(app);
   authRoutesInit(app);

@@ -15,18 +15,23 @@ datasource db {
 
 model User {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
+  name     String   
   email    String   @unique
   birthday DateTime 
   password String   
-  emails   Email[]  @relation("UserEmails")
-  }
+  emails   Email[]  @relation("UserEmails")  
+}
+
+enum ETemplateEmail {
+  WELCOME
+  SUPPORT
+  OTHER
+}
 
 model Email {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   userId   String   @db.ObjectId @map("_userId") 
-  user     User     @relation("UserEmails",fields: [userId], references: [id], onDelete: Cascade)
-  to       String
-  subject  String
+  user         User?     @relation("UserEmails", fields: [userId], references: [id], onDelete: Cascade) 
+  templateEmail ETemplateEmail
   dateSent DateTime @default(now())
 }
