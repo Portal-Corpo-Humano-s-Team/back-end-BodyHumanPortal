@@ -21,12 +21,6 @@ export interface ISMTP {
   from: string;
 }
 
-// export enum ETemplateType {
-//   WELCOME = "welcome",
-//   SUPPORT = "support",
-//   OTHER = "other",
-// }
-
 export interface IMailParams {
   to: string;
   userId: string;
