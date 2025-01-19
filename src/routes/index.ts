@@ -3,7 +3,6 @@ import validateJwtToken from "../middleware/validateToken.js";
 import userRoutesInit from "./usersRoutes.js";
 import authRoutesInit from "./authRoutes.js";
 import emailRoutesInit from "./emailRoutes.js";
-import { SuccessResponse } from "../validations/CustomValidation.js";
 
 const routes = (app: Router) => {
   app.get("/", (req: Request, res: Response) => {
