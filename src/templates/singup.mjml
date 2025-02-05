@@ -1,0 +1,21 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-image width="150px" src="logo-url.jpg" alt="Logo" />
+        <mj-text align="center" font-size="20px" color="#333333">Bem-vindo ao [Nome do Serviço]</mj-text>
+        <mj-divider border-color="#DDDDDD" />
+        <mj-text font-size="16px" color="#555555"> Olá, <strong>{{name}}</strong>, </mj-text>
+        <mj-text font-size="16px" color="#555555">
+          Estamos felizes em tê-lo conosco. Sua conta foi criada com sucesso!
+        </mj-text>
+        <mj-text font-size="16px" color="#555555"> Você pode acessar sua conta clicando no link abaixo: </mj-text>
+        <mj-button href="[Link de Acesso]" background-color="#28a745" color="#ffffff"> Acessar minha conta </mj-button>
+        <mj-text font-size="12px" color="#888888" align="center">
+          Se você tiver alguma dúvida, entre em contato com nosso suporte.
+        </mj-text>
+        <mj-text font-size="12px" color="#888888" align="center"> Atenciosamente, Equipe [Nome do Serviço] </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

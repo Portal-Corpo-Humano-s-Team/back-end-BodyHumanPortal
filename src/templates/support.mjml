@@ -1,0 +1,23 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-image width="150px" src="logo-url.jpg" alt="Logo" />
+        <mj-text align="center" font-size="20px" color="#333333">Suporte ao Cliente</mj-text>
+        <mj-divider border-color="#DDDDDD" />
+        <mj-text font-size="16px" color="#555555"> Olá, <strong>{{name}}</strong>, </mj-text>
+        <mj-text font-size="16px" color="#555555">
+          Obrigado por entrar em contato conosco. Recebemos sua solicitação e nossa equipe de suporte está trabalhando
+          para resolvê-la o mais rápido possível.
+        </mj-text>
+        <mj-text font-size="16px" color="#555555">
+          Caso tenha mais perguntas, não hesite em nos enviar outra mensagem.
+        </mj-text>
+        <mj-button href="mailto:suporte@empresa.com" background-color="#007BFF" color="#ffffff">
+          Enviar outra mensagem
+        </mj-button>
+        <mj-text font-size="12px" color="#888888" align="center"> Atenciosamente, Equipe de Suporte </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

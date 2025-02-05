@@ -1,12 +1,14 @@
-import express from "express";
+import { Router, Request, Response } from "express";
 import validateJwtToken from "../middleware/validateToken.js";
 import userRoutesInit from "./usersRoutes.js";
 import authRoutesInit from "./authRoutes.js";
 import emailRoutesInit from "./emailRoutes.js";
 
-const routes = (app) => {
-  app.route("/").get((req, res) => res.status(200).send("Server's Running"));
-  app.use("/auth/", validateJwtToken);
+const routes = (app: Router) => {
+  app.get("/", (req: Request, res: Response) => {
+    res.status(200).json({ sucess: true, message: "Servers Running" });
+  });
+  app.use("/auth", validateJwtToken);
 
   userRoutesInit(app);
   authRoutesInit(app);
