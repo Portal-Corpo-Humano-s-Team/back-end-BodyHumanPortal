@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { prisma } from "../config/connectDb.ts";
 import { IUser } from "../types/userTypes.ts";
 import { ValidationError } from "../validations/CustomValidation.ts";
+import { EAuthMethod } from "@prisma/client";
 
 export default class UserService {
   static async createUser(payload): Promise<IUser> {
@@ -19,6 +20,7 @@ export default class UserService {
       data: {
         name,
         email,
+        authMethod: EAuthMethod.LOCAL,
         birthday: formattedDate,
         password: hashedPassword,
       },

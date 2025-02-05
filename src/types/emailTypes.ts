@@ -1,4 +1,3 @@
-import { IUser } from "./userTypes";
 import { ETemplateEmail } from "@prisma/client";
 
 export interface IPayloadTransporter {
@@ -28,7 +27,11 @@ export interface IMailParams {
 }
 
 export interface IBaseTemplateData {
-  username: string;
+  name: string;
+}
+
+interface ITwoFactorTemplateData extends IBaseTemplateData {
+  token: string;
 }
 interface IWelcomeTemplateData extends IBaseTemplateData {}
 interface IOtherTemplateData extends IBaseTemplateData {}
@@ -36,4 +39,4 @@ interface ISupportTemplateData extends IBaseTemplateData {
   message: string;
 }
 
-export type TDataTemplate = IWelcomeTemplateData | IOtherTemplateData | ISupportTemplateData | IUser;
+export type TDataTemplate = IWelcomeTemplateData | ITwoFactorTemplateData | ISupportTemplateData | IOtherTemplateData;

@@ -1,5 +1,10 @@
 import { Response } from "express";
 
+enum EStatusResponse {
+  SUCCESS = "Success",
+  ERROR = "Error",
+}
+
 export class ValidationError extends Error {
   code: string;
   constructor(message: string) {
@@ -17,7 +22,7 @@ export class ValidationError extends Error {
 
     const statusCode = error instanceof ValidationError ? 400 : 500;
     return res.status(statusCode).json({
-      status: "Error",
+      status: EStatusResponse.ERROR,
       message: error.message || "Erro interno do servidor",
       code: error.code || "UnexpectedError",
     });
@@ -27,7 +32,7 @@ export class ValidationError extends Error {
 export class SuccessResponse {
   static send(res: Response, statusCode: number, message: string, data?: any) {
     const responseBody: any = {
-      success: true,
+      status: EStatusResponse.SUCCESS,
       message: message,
     };
 

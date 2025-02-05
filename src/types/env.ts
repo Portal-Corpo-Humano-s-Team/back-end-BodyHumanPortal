@@ -9,6 +9,7 @@ type EnvConfig = {
   SMTP_PASS: string;
   SMTP_HOST: string;
   SMTP_PORT: number;
+  GOOGLE_CLIENT_ID: string;
 };
 
 const env: EnvConfig = {
@@ -18,6 +19,7 @@ const env: EnvConfig = {
   SMTP_PASS: process.env.SMTP_PASS || "",
   SMTP_HOST: process.env.SMTP_HOST || "",
   SMTP_PORT: Number(process.env.SMTP_PORT),
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
 };
 
 export default env;

@@ -13,17 +13,26 @@ datasource db {
   url      = env("DB_CONNECTION_STRING")
 }
 
+enum EAuthMethod {
+  LOCAL
+  GOOGLE
+  BOTH
+}
+
 model User {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   name     String   
   email    String   @unique
-  birthday DateTime 
-  password String   
+  birthday DateTime?  
+  password String? 
+  authMethod EAuthMethod? 
+  googleSub String?
   emails   Email[]  @relation("UserEmails")  
 }
 
 enum ETemplateEmail {
   WELCOME
+  TWOFACTORAUTH
   SUPPORT
   OTHER
 }

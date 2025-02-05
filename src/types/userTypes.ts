@@ -5,8 +5,17 @@ export interface IUser {
   birthday: Date | string;
   password?: string;
 }
-
-export interface IUserLogin {
+export interface IUserLoginWithGoogle {
   token: string;
-  user: Pick<IUser, "id" | "name" | "email" | "birthday">;
 }
+
+export interface IUserLoginTotp {
+  user: Pick<IUser, "id" | "email">;
+}
+
+export interface IUserVerifyTotpToken {
+  isValid: boolean;
+  token: string;
+}
+
+export type TGeneralLogin = IUserLoginTotp | IUserLoginWithGoogle;

@@ -14,19 +14,22 @@ export const getHtmlTemplate = (type: ETemplateEmail): String => {
 
 const templates: Record<ETemplateEmail, String> = {
   [ETemplateEmail.WELCOME]: getHtmlTemplate(ETemplateEmail.WELCOME),
+  [ETemplateEmail.TWOFACTORAUTH]: getHtmlTemplate(ETemplateEmail.TWOFACTORAUTH),
   [ETemplateEmail.SUPPORT]: getHtmlTemplate(ETemplateEmail.SUPPORT),
   [ETemplateEmail.OTHER]: getHtmlTemplate(ETemplateEmail.SUPPORT),
 };
 
 const templateSubject: Record<ETemplateEmail, string> = {
   [ETemplateEmail.WELCOME]: "Bem-vindo ao Portal do Corpo Humano!",
+  [ETemplateEmail.TWOFACTORAUTH]: "O seu código é: {{token}}",
   [ETemplateEmail.SUPPORT]: "Suporte Portal do Corpo Humano!",
   [ETemplateEmail.OTHER]: "Other Template Portal do Corpo Humano!",
 };
 
 export default class EmailService {
   static async sendEmail({ to, userId, templateEmail }: IMailParams, params: TDataTemplate) {
-    const subject = templateSubject[templateEmail as ETemplateEmail];
+    let subject = templateSubject[templateEmail as ETemplateEmail];
+    subject = Mustache.render(subject, params);
     const template = templates[templateEmail as ETemplateEmail];
     const html = Mustache.render(template, params);
 

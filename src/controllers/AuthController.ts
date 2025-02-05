@@ -1,20 +1,29 @@
 import AuthService from "../service/AuthService.ts";
 import { Request, Response } from "express";
-import { IUser } from "../types/userTypes.ts";
 import { SuccessResponse, ValidationError } from "../validations/CustomValidation.ts";
 
 export default class AuthController {
   static async login(req: Request, res: Response) {
     try {
-      const { email, password } = req.body as IUser;
+      const { email, password, googleToken } = req.body;
 
-      if (!email || !password) {
-        throw new ValidationError("Email e senha são obrigatórios");
-      }
+      const result = await AuthService.login(email, password, googleToken);
 
-      const result = await AuthService.login(email, password);
+      console.log(result);
+      SuccessResponse.send(res, 202, "Usuário autenticado com sucesso", result);
+    } catch (error) {
+      ValidationError.handleError(res, error);
+    }
+  }
 
-      SuccessResponse.send(res, 201, "Usuário autenticado com sucesso", result.token);
+  static async validate2FAToken(req: Request, res: Response) {
+    const { email } = req.params;
+    const { token } = req.body;
+
+    try {
+      const validation = await AuthService.verify2FAToken(email, token);
+
+      SuccessResponse.send(res, 200, "Token TOTP validado com sucesso.", validation);
     } catch (error) {
       ValidationError.handleError(res, error);
     }
