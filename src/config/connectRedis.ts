@@ -1,7 +1,7 @@
 import { createClient } from "redis";
-
+import env from "../types/env.ts";
 export const redisClient = createClient({
-  url: process.env.REDIS_URL,
+  url: env.REDIS_URL,
   socket: {
     tls: true,
   },
