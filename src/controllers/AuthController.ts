@@ -10,7 +10,7 @@ export default class AuthController {
       const result = await AuthService.login(email, password, googleToken);
 
       console.log(result);
-      SuccessResponse.send(res, 202, "Usuário autenticado com sucesso", result);
+      SuccessResponse.send(res, 202, "Token temporário enviado com sucesso", result);
     } catch (error) {
       ValidationError.handleError(res, error);
     }

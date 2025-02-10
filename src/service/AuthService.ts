@@ -10,7 +10,7 @@ import {
   IUserVerifyTotpToken,
   TGeneralLogin,
 } from "../types/userTypes.ts";
-import { ValidationError } from "../validations/CustomValidation.ts";
+import { SuccessResponse, ValidationError } from "../validations/CustomValidation.ts";
 import speakeasy from "speakeasy";
 import { redisClient } from "../config/connectRedis.ts";
 import EmailService from "./EmailService.ts";
