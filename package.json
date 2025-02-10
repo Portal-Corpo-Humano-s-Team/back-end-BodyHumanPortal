@@ -7,9 +7,9 @@
   "scripts": {
     "test": "jest",
     "dev": "npm run dev:type",
-    "dev:type": "nodemon -e js,ts,mjml,env --exec 'node --loader --trace-deprecation ts-node/esm src/server.ts'",
-    "start": "npm install && npm run schema-to-js",
-    "build": "npm run schema-to-js && npm run build",
+    "dev:type": "nodemon -e js,ts,mjml,env --exec 'node --loader ts-node/esm src/server.ts'",
+    "start": "node --loader ts-node/esm src/server.ts",
+    "build": "npm install && npm run schema-to-js",
     "schema-to-js": "node node_modules/@paljs/cli/bin/run schema json -s ./src/prisma/schema.prisma -o ./src/prisma -t ts"
   },
   "keywords": [],
