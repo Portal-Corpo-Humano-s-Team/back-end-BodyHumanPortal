@@ -4,90 +4,83 @@
        href="https://fonts.googleapis.com/css2?family=Tilt+Warp" />
 
        <mj-font name="Tilt Warp-neon" href="https://fonts.googleapis.com/css2?family=Tilt+Neon" />
-      <mj-style>
-
-        .envelope-container { 
-	        position: relative; 
+        <!-- .envelope-container { 
         	width: 100%; 
         	height: 20vw; 
         	margin: 0 auto; 
         	background-color: #87CEEB;
         	border-bottom-left-radius: 20px; 
-        	border-bottom-right-radius: 20px; 
-        } 
-        
-        .container { 
-        	width: 10px; height: 10vw;
-    	    background-color: #87CEEB;
-        	border-bottom-left-radius: 20px; 
-        	border-bottom-right-radius: 20px;
-        } 
-
-        .inverted-triangle { 
-        	position: absolute; 
-	        top: 0; 
-        	left: 50%; 
-        	transform: translateX(-50%); 
-        	width: 0; 
-	        height: 0; 
-        	border-left: 20vw solid
-         	transparent; 
-        	border-right: 20vw solid transparent; 
-        	border-top: 13vw solid #0076a3; 
-        	z-index: 2;
+        	border-bottom-right-radius: 20px;  
         }
-        
+          width: 100%;
+         height: 20vw;
+         margin: 0 auto;
+         background-color: #87CEEB;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-clip: content-box; 
+         -->
+      <mj-style>
+
+         .container-code {
+            width: 40%;
+         }
+
         .code {
         	border-radius: 10px;
-	        background-color: #A7E6EB;
+	      background-color: #A7E6EB;
         	font-weight: 900;
         }
       </mj-style>
       <mj-title>Exemplo de Email</mj-title>
    </mj-head>
+   
    <mj-body>
-      <mj-section css-class="inverted-triangle"></mj-section>
-      <mj-section css-class="envelope-container"></mj-section>
       <mj-section>
          <mj-column>
-            <mj-text font-size="50px" font-family="Arial" font-weight="bold" color="#103F65">Olá {{name}}, que bom te ver de novo!</mj-text>
+         <mj-image width="1000px" src="https://i.postimg.cc/76SYVjXS/EMAIL-GIGANTE.png" alt="envolpe image" />
+         </mj-column>
+      </mj-section>
+      <mj-section>
+         <mj-column width="550px">
+            <mj-text font-size="35px" font-family="Arial" font-weight="bold" color="#103F65">Olá {{name}}, que bom te ver de novo!</mj-text>
             <mj-text font-size="25px" color="#1663A3" font-family="Arial" font-weight="bold" line-height="32px">
                Parece que você esqueceu a sua senha, mas não se preocupe. Para trocar de senha insira esse código:
             </mj-text>
          </mj-column>
       </mj-section>
 
-      <mj-section>
+      <mj-section css-class="container-code">
          <mj-group>
-            <mj-column padding="8px">
+            <mj-column padding="10px">
                <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{1}}</mj-text>
             </mj-column>
-            <mj-column padding="8px" border-radius="10px">
+            <mj-column padding="10px" border-radius="10px">
                <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{2}}</mj-text>
             </mj-column>
-            <mj-column padding="8px" border-radius="10px">
+            <mj-column padding="10px" border-radius="10px">
                <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{3}}</mj-text>
             </mj-column>
          </mj-group>
         <mj-group>
-            <mj-column padding="8px" border-radius="10px">
+            <mj-column padding="10px">
                <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{4}}</mj-text>
             </mj-column>
-            <mj-column padding="8px" border-radius="10px">
+            <mj-column padding="10px">
                <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{5}}</mj-text>
             </mj-column>
-            <mj-column padding="8px" border-radius="10px">
+            <mj-column padding="10px">
                <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{6}}</mj-text>
             </mj-column>
          </mj-group>
       </mj-section>
       <mj-section>
          <mj-column>
-            <mj-image src="images/twoFactorToken.svg" alt="passaword-image" />
+            <mj-image width="330px" src="https://i.postimg.cc/MGYSR6yP/padLock.png" />
             <mj-text font-size="30px" font-family="Tilt Warp"  color="#A7A7A7" align="center">
-               Por favor, não responda esse e-mail.
+               Por favor, não responda esse e-mail
             </mj-text>
-            <mj-spacer height="15px" />
+            <mj-spacer height="10px" />
             <mj-text font-size="20px" font-family="Tilt Warp"  color="#A7A7A7" align="center">
                Este e-mail não é uma mensagem de marketing, por isso não há opção de cancelamento para este tipo de mensagem.
             </mj-text>

@@ -10,7 +10,7 @@
   </mj-head>
   <mj-body>
     <mj-section background-color="#f4f4f4" padding="20px 0">
-      <mj-column>
+      <mj-column> 
         <mj-text
           font-family="Roboto, Arial, sans-serif"
           align="center"
@@ -57,8 +57,12 @@
         </mj-button>
       </mj-column>
     </mj-section>
-
-    <mj-section background-color="#f4f4f4" padding="20px 0">
+    <mj-section>
+  <mj-column >
+    <mj-image src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHVtcWthbTFzOHF0djh4bDJwM2NrdXh3OHZiN3RsMWo5aWtpazZneCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KF7EeaqPal5LE1ngqw/giphy.gif"/>
+  </mj-column>
+  </mj-section>
+  <mj-section background-color="#f4f4f4" padding="20px 0">
       <mj-column>
         <mj-text font-family="Roboto, Arial, sans-serif" font-size="14px" color="#999" align="center">
           Se você tiver dúvidas, entre em contato conosco via e-mail em
@@ -68,6 +72,6 @@
           © 2024 Portal do Corpo Humano. Todos os direitos reservados.
         </mj-text>
       </mj-column>
-    </mj-section>
+    </mj-section> 
   </mj-body>
 </mjml>
