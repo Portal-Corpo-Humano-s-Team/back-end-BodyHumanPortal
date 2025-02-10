@@ -1,6 +1,11 @@
 import { createClient } from "redis";
 
-export const redisClient = createClient();
+export const redisClient = createClient({
+  url: process.env.REDIS_URL,
+  socket: {
+    tls: true,
+  },
+});
 
 redisClient.on("error", (err) => console.error("Erro ao conectar ao Redis:", err));
 
