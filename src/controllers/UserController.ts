@@ -1,8 +1,8 @@
 import UserService from "../service/UserService.js";
-import EmailService from "../service/EmailService.ts";
+import EmailService from "../service/EmailService";
 import type { Request, Response } from "express";
-import { SuccessResponse, ValidationError } from "../validations/CustomValidation.ts";
-import { IMailParams } from "../types/emailTypes.ts";
+import { SuccessResponse, ValidationError } from "../validations/CustomValidation";
+import { IMailParams } from "../types/emailTypes";
 
 export default class UserController {
   static async createUser(req: Request, res: Response) {

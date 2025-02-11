@@ -1,8 +1,8 @@
-import env from "./types/env.ts";
+import env from "./types/env";
 import "dotenv/config";
-import dbConnect from "./config/connectDb.ts";
-import app from "./app.ts";
-import connectRedis from "./config/connectRedis.ts";
+import dbConnect from "./config/connectDb";
+import app from "./app";
+import connectRedis from "./config/connectRedis";
 
 //Criando conexão com o servidor;
 

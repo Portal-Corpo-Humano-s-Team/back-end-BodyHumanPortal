@@ -1,5 +1,5 @@
 import { IPayloadTransporter, ISMTP } from "../types/emailTypes";
-import env from "../types/env.ts";
+import env from "../types/env";
 
 export const SMTP: ISMTP = {
   host: env.SMTP_HOST,

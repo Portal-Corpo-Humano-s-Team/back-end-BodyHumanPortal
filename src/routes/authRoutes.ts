@@ -1,5 +1,5 @@
-import AuthController from "../controllers/AuthController.ts";
-import { IAuthRequest } from "../types/authTypes.ts";
+import AuthController from "../controllers/AuthController";
+import { IAuthRequest } from "../types/authTypes";
 import { Response, Router } from "express";
 
 const authRoutesInit = (app: Router) => {

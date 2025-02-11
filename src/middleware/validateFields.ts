@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import { isRequiredField, isAutoIncrement, isRelationField, isIdValue } from "../validations/validateFields.ts";
-import { schema } from "../prisma/schema.ts";
+import { isRequiredField, isAutoIncrement, isRelationField, isIdValue } from "../validations/validateFields";
+import { schema } from "../prisma/schema";
 import { Model } from "@paljs/types";
-import { ValidationError } from "../validations/CustomValidation.ts";
+import { ValidationError } from "../validations/CustomValidation";
 
 enum EValidationStatus {
   SUCESS = "Sucess",

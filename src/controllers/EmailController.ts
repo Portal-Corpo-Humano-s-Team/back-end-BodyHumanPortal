@@ -1,9 +1,9 @@
-import EmailService from "../service/EmailService.ts";
+import EmailService from "../service/EmailService";
 import { Response } from "express";
-import { IAuthRequest } from "../types/authTypes.ts";
-import { IUser } from "../types/userTypes.ts";
+import { IAuthRequest } from "../types/authTypes";
+import { IUser } from "../types/userTypes";
 import { ETemplateEmail } from "@prisma/client";
-import { ValidationError, SuccessResponse } from "../validations/CustomValidation.ts";
+import { ValidationError, SuccessResponse } from "../validations/CustomValidation";
 
 export default class EmailController {
   static async sendEmail(req: IAuthRequest, res: Response) {

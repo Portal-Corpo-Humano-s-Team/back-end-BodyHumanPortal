@@ -1,9 +1,9 @@
 import jwt, { JsonWebTokenError, JwtPayload, VerifyErrors } from "jsonwebtoken";
 import { IAuthRequest } from "../types/authTypes";
 import { Response, NextFunction } from "express";
-import env from "../types/env.ts";
-import { IUser } from "../types/userTypes.ts";
-import { ValidationError } from "../validations/CustomValidation.ts";
+import env from "../types/env";
+import { IUser } from "../types/userTypes";
+import { ValidationError } from "../validations/CustomValidation";
 
 const key = env.JWT_KEY || "token-key";
 

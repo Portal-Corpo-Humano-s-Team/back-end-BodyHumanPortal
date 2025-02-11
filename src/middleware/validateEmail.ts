@@ -1,8 +1,8 @@
 import { Response, NextFunction } from "express";
-import { IAuthRequest } from "../types/authTypes.ts";
-import { ValidationError } from "../validations/CustomValidation.ts";
-import { IUser } from "../types/userTypes.ts";
-import { validateEmailDomain } from "../validations/validationEmail.ts";
+import { IAuthRequest } from "../types/authTypes";
+import { ValidationError } from "../validations/CustomValidation";
+import { IUser } from "../types/userTypes";
+import { validateEmailDomain } from "../validations/validationEmail";
 
 export default async function validateEmailRequest(req: IAuthRequest, res: Response, next: NextFunction) {
   try {

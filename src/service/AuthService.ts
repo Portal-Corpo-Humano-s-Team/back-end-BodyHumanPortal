@@ -1,20 +1,14 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { prisma } from "../config/connectDb.ts";
+import { prisma } from "../config/connectDb";
 import { User } from "@prisma/client";
 import { ETemplateEmail } from "@prisma/client";
-import {
-  IUser,
-  IUserLoginTotp,
-  IUserLoginWithGoogle,
-  IUserVerifyTotpToken,
-  TGeneralLogin,
-} from "../types/userTypes.ts";
-import { ValidationError } from "../validations/CustomValidation.ts";
+import { IUser, IUserLoginTotp, IUserLoginWithGoogle, IUserVerifyTotpToken, TGeneralLogin } from "../types/userTypes";
+import { ValidationError } from "../validations/CustomValidation";
 import speakeasy from "speakeasy";
-import { redisClient } from "../config/connectRedis.ts";
-import EmailService from "./EmailService.ts";
-import env from "../types/env.ts";
+import { redisClient } from "../config/connectRedis";
+import EmailService from "./EmailService";
+import env from "../types/env";
 import { OAuth2Client } from "google-auth-library";
 import { EAuthMethod } from "@prisma/client";
 

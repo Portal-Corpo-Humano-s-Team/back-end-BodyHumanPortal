@@ -1,5 +1,5 @@
 import { validate } from "deep-email-validator";
-import { ValidationError } from "./CustomValidation.ts";
+import { ValidationError } from "./CustomValidation";
 
 const trustedDomains = [
   // Provedores Globais

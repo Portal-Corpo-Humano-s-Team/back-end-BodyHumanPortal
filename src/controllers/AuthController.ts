@@ -1,6 +1,6 @@
-import AuthService from "../service/AuthService.ts";
+import AuthService from "../service/AuthService";
 import { Request, Response } from "express";
-import { SuccessResponse, ValidationError } from "../validations/CustomValidation.ts";
+import { SuccessResponse, ValidationError } from "../validations/CustomValidation";
 
 export default class AuthController {
   static async login(req: Request, res: Response) {

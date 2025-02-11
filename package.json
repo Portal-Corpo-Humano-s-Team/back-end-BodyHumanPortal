@@ -7,9 +7,9 @@
   "scripts": {
     "test": "jest",
     "dev": "npm run dev:type",
-    "dev:type": "nodemon -e js,ts,mjml,env --exec 'node --loader ts-node/esm src/server.ts'",
-    "start": "node --loader ts-node/esm src/server.ts",
-    "build": "npm install && npm run schema-to-js",
+    "dev:type": "npm run schema-to-js && tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "build": "npm install && npm run schema-to-js && tsc",
     "schema-to-js": "node node_modules/@paljs/cli/bin/run schema json -s ./src/prisma/schema.prisma -o ./src/prisma -t ts"
   },
   "keywords": [],
@@ -31,7 +31,8 @@
     "mustache": "^4.2.0",
     "nodemailer": "^6.9.15",
     "redis": "^4.7.0",
-    "speakeasy": "^2.0.0"
+    "speakeasy": "^2.0.0",
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@paljs/cli": "^8.0.1",
@@ -39,7 +40,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.5",
+    "@types/node": "^22.13.1",
     "@types/nodemailer": "^6.4.17",
     "@types/speakeasy": "^2.0.10",
     "jest": "^29.7.0",

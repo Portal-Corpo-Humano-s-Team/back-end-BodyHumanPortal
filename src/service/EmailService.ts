@@ -1,8 +1,8 @@
-import { SMTP, payloadTransporter } from "../config/payloadEmailTransporter.ts";
-import { IMailParams, TDataTemplate } from "../types/emailTypes.ts";
+import { SMTP, payloadTransporter } from "../config/payloadEmailTransporter";
+import { IMailParams, TDataTemplate } from "../types/emailTypes";
 import { ETemplateEmail } from "@prisma/client";
 import nodemailer, { Transporter } from "nodemailer";
-import { prisma } from "../config/connectDb.ts";
+import { prisma } from "../config/connectDb";
 import Mustache from "mustache";
 import mjml2html from "mjml";
 import fs from "fs";

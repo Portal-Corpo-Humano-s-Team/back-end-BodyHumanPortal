@@ -1,8 +1,8 @@
 import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
-import { prisma } from "../config/connectDb.ts";
-import { IUser } from "../types/userTypes.ts";
-import { ValidationError } from "../validations/CustomValidation.ts";
+import { prisma } from "../config/connectDb";
+import { IUser } from "../types/userTypes";
+import { ValidationError } from "../validations/CustomValidation";
 import { EAuthMethod } from "@prisma/client";
 
 export default class UserService {
