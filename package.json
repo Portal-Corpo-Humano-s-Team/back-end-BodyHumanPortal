@@ -8,8 +8,8 @@
     "test": "jest",
     "dev": "npm run dev:type",
     "dev:type": "npm run schema-to-js && tsx watch src/server.ts",
-    "start": "node dist/server.js",
-    "build": "npm install && npm run schema-to-js && tsc",
+    "start": "tsx watch src/server.ts",
+    "build": "npm install && npm run schema-to-js",
     "schema-to-js": "node node_modules/@paljs/cli/bin/run schema json -s ./src/prisma/schema.prisma -o ./src/prisma -t ts"
   },
   "keywords": [],
@@ -31,8 +31,7 @@
     "mustache": "^4.2.0",
     "nodemailer": "^6.9.15",
     "redis": "^4.7.0",
-    "speakeasy": "^2.0.0",
-    "tsx": "^4.19.2"
+    "speakeasy": "^2.0.0"
   },
   "devDependencies": {
     "@paljs/cli": "^8.0.1",
@@ -48,9 +47,14 @@
     "prisma": "^6.2.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.10",
+    "tsx": "^4.19.2"
   },
   "peerDependencies": {
     "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=22.11.0"
   }
 }
