@@ -9,7 +9,8 @@
     "dev": "npm run dev:type",
     "dev:type": "npm run schema-to-js && tsx watch src/server.ts",
     "start": "tsx watch src/server.ts",
-    "build": "npm install && npm run schema-to-js",
+    "build": "npm install && npm run schema-to-js && npm run db",
+    "db": "npx prisma generate --schema=src/prisma/schema.prisma",
     "schema-to-js": "node node_modules/@paljs/cli/bin/run schema json -s ./src/prisma/schema.prisma -o ./src/prisma -t ts"
   },
   "keywords": [],
