@@ -1,15 +1,9 @@
 import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
-<<<<<<< HEAD
 import { prisma } from "../config/connectDb";
 import { IUser } from "../types/userTypes";
-import { ValidationError } from "../validations/CustomValidation";
-=======
-import { prisma } from "../config/connectDb.ts";
-import { IUser } from "../types/userTypes.ts";
 import { User } from "@prisma/client";
-import { ValidationError } from "../validations/CustomValidation.ts";
->>>>>>> 415691c (FEAT: enhance user model with createAccount and authMethod fields; update user creation logic and routes)
+import { ValidationError } from "../validations/CustomValidation";
 import { EAuthMethod } from "@prisma/client";
 
 export default class UserService {
