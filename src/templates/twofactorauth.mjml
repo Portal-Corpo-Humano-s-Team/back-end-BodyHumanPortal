@@ -23,7 +23,7 @@
       <mj-style>
 
          .container-code {
-            width: 40%;
+            width: 80%;
          }
 
         .code {
@@ -51,44 +51,44 @@
       </mj-section>
 
       <mj-section css-class="container-code">
-         <mj-group>
-            <mj-column padding="10px">
-               <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{1}}</mj-text>
-            </mj-column>
-            <mj-column padding="10px" border-radius="10px">
-               <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{2}}</mj-text>
-            </mj-column>
-            <mj-column padding="10px" border-radius="10px">
-               <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{3}}</mj-text>
-            </mj-column>
-         </mj-group>
-        <mj-group>
-            <mj-column padding="10px">
-               <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{4}}</mj-text>
-            </mj-column>
-            <mj-column padding="10px">
-               <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{5}}</mj-text>
-            </mj-column>
-            <mj-column padding="10px">
-               <mj-text css-class="code" align="center" color="#103F65" font-size="30px">{{6}}</mj-text>
-            </mj-column>
-         </mj-group>
+   <mj-group>
+    <mj-column padding="10px">
+      <mj-text css-class="code" align="center" color="#103F65" font-size="25px">{{1}}</mj-text>
+    </mj-column>
+    <mj-column padding="10px" border-radius="10px">
+      <mj-text css-class="code" align="center" color="#103F65" font-size="25px">{{2}}</mj-text>
+    </mj-column>
+    <mj-column padding="10px" border-radius="10px">
+      <mj-text css-class="code" align="center" color="#103F65" font-size="25px">{{3}}</mj-text>
+    </mj-column>
+  </mj-group>
+  <mj-group>
+    <mj-column padding="10px">
+      <mj-text css-class="code" align="center" color="#103F65" font-size="25px">{{4}}</mj-text>
+    </mj-column>
+    <mj-column padding="10px">
+      <mj-text css-class="code" align="center" color="#103F65" font-size="25px">{{5}}</mj-text>
+    </mj-column>
+    <mj-column padding="10px">
+      <mj-text css-class="code" align="center" color="#103F65" font-size="25px">{{6}}</mj-text>
+    </mj-column>
+  </mj-group>
       </mj-section>
       <mj-section>
          <mj-column>
-            <mj-image width="330px" src="https://i.postimg.cc/MGYSR6yP/padLock.png" />
-            <mj-text font-size="30px" font-family="Tilt Warp"  color="#A7A7A7" align="center">
+            <mj-image width="330px" src="https://i.postimg.cc/9FhvwvBp/padLock.png" alt="padlock"/>
+            <mj-text font-size="20px"  font-weight="bold" font-family="Arial"  color="#A7A7A7" align="center">
                Por favor, não responda esse e-mail
             </mj-text>
-            <mj-spacer height="10px" />
-            <mj-text font-size="20px" font-family="Tilt Warp"  color="#A7A7A7" align="center">
+            <mj-spacer height="1px" />
+            <mj-text font-size="15px" line-height="25px"  font-weight="bold" font-family="Arial"  color="#A7A7A7" align="center">
                Este e-mail não é uma mensagem de marketing, por isso não há opção de cancelamento para este tipo de mensagem.
             </mj-text>
          </mj-column>
       </mj-section>
       <mj-section padding="35px" background-color="#A7E6EB">
          <mj-column>
-            <mj-text color="#848484" line-height="25px" font-size="20px" font-family="Tilt Warp" align="center">
+            <mj-text color="#848484" line-height="25px" font-size="20px"  font-weight="bold" font-family="Arial" align="center">
             Obrigado por escolher o 
             <span style="color: #103F65; font-weight: bold;">PORTAL DO CORPO HUMANO!</span>
             </mj-text>

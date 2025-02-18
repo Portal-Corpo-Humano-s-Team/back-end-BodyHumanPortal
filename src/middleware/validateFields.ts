@@ -35,16 +35,6 @@ export const validationFields =
     if (missingFields.length === 0 && excessFields.length === 0) {
       return { status: EValidationStatus.SUCESS };
     }
-
-    // if (missingFields.length > 0 && excessFields.length > 0) {
-    //   throw new ValidationError(
-    //     `Campos não encontrados: ${missingFields.join(", ")}, Campos não esperados: ${excessFields.join(", ")}`
-    //   );
-    // } else if (missingFields.length > 0) {
-    //   throw new ValidationError(`Campos não encontrados: ${missingFields.join(", ")}`);
-    // } else if (excessFields.length > 0) {
-    //   throw new ValidationError(`Campos não esperados: ${excessFields.join(", ")}`);
-    // }
   };
 
 export const validateRequiredField = (modelName: String) => (req: Request, res: Response, next: NextFunction) => {

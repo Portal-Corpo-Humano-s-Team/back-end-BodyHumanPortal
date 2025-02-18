@@ -10,7 +10,7 @@ import {
   IUserVerifyTotpToken,
   TGeneralLogin,
 } from "../types/userTypes.ts";
-import { SuccessResponse, ValidationError } from "../validations/CustomValidation.ts";
+import { ValidationError } from "../validations/CustomValidation.ts";
 import speakeasy from "speakeasy";
 import { redisClient } from "../config/connectRedis.ts";
 import EmailService from "./EmailService.ts";
@@ -18,7 +18,7 @@ import env from "../types/env.ts";
 import { OAuth2Client } from "google-auth-library";
 import { EAuthMethod } from "@prisma/client";
 
-const JWT_KEY = process.env.JWT_KEY || "chave_secreta";
+const JWT_KEY = env.JWT_KEY || "chave_secreta";
 const GoogleId = env.GOOGLE_CLIENT_ID;
 const GoogleClient = new OAuth2Client(GoogleId);
 
@@ -62,18 +62,15 @@ export default class AuthService {
       throw new ValidationError("Falha na autenticação com Google");
     }
 
-    const { email, name, sub } = payload;
+    const { email, name, sub, picture } = payload;
 
     let user = await prisma.user.findFirst({ where: { email } });
     console.log(user);
 
     if (user && user.authMethod == EAuthMethod.LOCAL) {
-      console.info("stay on validation");
-      console.info(user.id);
-      console.info(user.authMethod);
       await prisma.user.update({
         where: { id: user.id },
-        data: { authMethod: EAuthMethod.BOTH, googleSub: sub },
+        data: { authMethod: EAuthMethod.BOTH, profilePicture: picture, googleSub: sub },
       });
     }
 
@@ -83,9 +80,12 @@ export default class AuthService {
           email,
           name,
           authMethod: EAuthMethod.GOOGLE,
+          createAccount: new Date(),
+          profilePicture: picture,
           googleSub: sub,
         },
       });
+      await EmailService.sendEmail({ to: email, userId: user.id, templateEmail: ETemplateEmail.WELCOME }, user);
     }
 
     if (!payload.email_verified) {
@@ -97,7 +97,17 @@ export default class AuthService {
         },
       };
     } else {
-      const JwtToken: string = jwt.sign({ id: user.id, email: user.email, name: user.name }, JWT_KEY);
+      const JwtToken: string = jwt.sign(
+        {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          authMetod: user.authMethod,
+          profilePicture: user.profilePicture,
+          googleSub: user.googleSub,
+        },
+        JWT_KEY
+      );
       return {
         token: JwtToken,
       };
@@ -107,12 +117,11 @@ export default class AuthService {
     const secret = speakeasy.generateSecret().base32;
 
     const redisKey = `totp:${email}`;
-    console.log(redisKey);
 
     const existsToken = await redisClient.get(redisKey);
 
     if (existsToken) {
-      throw new ValidationError("Um código TOTP já foi enviado recentemente. Aguarde antes de gerar outro.");
+      throw new ValidationError("Um código já foi enviado recentemente. Aguarde antes de gerar outro.");
     }
 
     const token = speakeasy.totp({
@@ -120,6 +129,7 @@ export default class AuthService {
       encoding: "base32",
       step: 180,
     });
+    console.log(token);
     const letterToken = token.split("");
     const resultToken = {
       1: letterToken[0],
@@ -151,6 +161,8 @@ export default class AuthService {
     }
     const { secret } = JSON.parse(cacheData);
 
+    console.log(secret);
+
     if (!secret) {
       throw new ValidationError("Nenhuma chave 2FA ativa encontrada no cache.");
     }
@@ -163,6 +175,8 @@ export default class AuthService {
       window: 0,
     });
 
+    console.log("passou isvalid");
+
     if (isValid) {
       await redisClient.del(redisKey);
 
@@ -174,11 +188,20 @@ export default class AuthService {
           email: true,
           birthday: true,
           authMethod: true,
+          googleSub: true,
         },
       });
+      console.log(user);
 
       const JwtToken: string = jwt.sign(
-        { id: user.id, email: user.email, name: user.name, birthday: user.birthday, authMethod: user.authMethod },
+        {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          birthday: user.birthday,
+          authMethod: user.authMethod,
+          googleSub: user.googleSub,
+        },
         JWT_KEY
       );
       return {
@@ -186,7 +209,34 @@ export default class AuthService {
         token: JwtToken,
       };
     } else {
-      throw new ValidationError("Código 2FA inválido");
+      throw new ValidationError("Token inválido");
+    }
+  }
+
+  static async getUserProps(id: IUser["id"]): Promise<IUser> {
+    try {
+      const user = await prisma.user.findUnique({
+        where: { id },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          birthday: true,
+          authMethod: true,
+          createAccount: true,
+          googleSub: true,
+          profilePicture: true,
+          emails: true,
+        },
+      });
+
+      if (!user) {
+        throw new ValidationError("Usuário não encontrado");
+      }
+
+      return user;
+    } catch (error) {
+      throw new ValidationError("Token inválido");
     }
   }
 }

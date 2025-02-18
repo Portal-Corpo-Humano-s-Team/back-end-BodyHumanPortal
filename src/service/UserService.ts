@@ -2,27 +2,33 @@ import { ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
 import { prisma } from "../config/connectDb.ts";
 import { IUser } from "../types/userTypes.ts";
+import { User } from "@prisma/client";
 import { ValidationError } from "../validations/CustomValidation.ts";
 import { EAuthMethod } from "@prisma/client";
 
 export default class UserService {
-  static async createUser(payload): Promise<IUser> {
-    const { name, email, password, birthday } = payload;
+  static async createUser(payload: any): Promise<IUser> {
+    const { name, email, password, confirmPassword, birthday } = payload;
 
     if (await prisma.user.findUnique({ where: { email } })) {
       throw new ValidationError("Email já cadastrado");
     }
+    console.log(payload);
+    if (password !== confirmPassword) {
+      throw new ValidationError("Senhas não conferem");
+    }
 
-    const formattedDate = new Date(`${birthday}T00:00:00Z`).toISOString();
+    const formattedDate = new Date(`${birthday}`).toISOString();
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user: IUser = await prisma.user.create({
+    const user: User = await prisma.user.create({
       data: {
         name,
         email,
         authMethod: EAuthMethod.LOCAL,
         birthday: formattedDate,
         password: hashedPassword,
+        createAccount: new Date(),
       },
     });
 
@@ -31,6 +37,8 @@ export default class UserService {
       name: user.name,
       email: user.email,
       birthday: formattedDate,
+      authMethod: user.authMethod,
+      createAccount: user.createAccount,
     };
   }
 
@@ -41,27 +49,15 @@ export default class UserService {
         name: true,
         email: true,
         birthday: true,
+        authMethod: true,
+        googleSub: true,
+        profilePicture: true,
         emails: true,
       },
     });
   }
 
-  static async getUserById(userId) {
-    const user = prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        birthday: true,
-      },
-    });
-
-    if (!user) throw new ValidationError("Usuário não encontrado");
-    return user;
-  }
-
-  static async updateUser(userId: IUser["id"], payload: IUser) {
+  static async updateUser(userId: User["id"], payload: User) {
     if (!ObjectId.isValid(userId)) {
       throw new ValidationError("ID inválido: o ID fornecido não é um ObjectId válido.");
     }

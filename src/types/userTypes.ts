@@ -4,6 +4,8 @@ export interface IUser {
   email: string;
   birthday: Date | string;
   password?: string;
+  createAccount: Date;
+  authMethod: string;
 }
 export interface IUserLoginWithGoogle {
   token: string;

@@ -10,7 +10,7 @@ const key = env.JWT_KEY || "token-key";
 function validateJwtToken(req: IAuthRequest, res: Response, next: NextFunction) {
   try {
     const authHeader: string = req.headers["authorization"];
-
+    console.log(authHeader);
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       throw new ValidationError("Token não fornecido ou mal formatado");
     }
