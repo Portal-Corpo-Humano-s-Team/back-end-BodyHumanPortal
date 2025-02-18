@@ -7,10 +7,10 @@ import { IMailParams } from "../types/emailTypes";
 export default class UserController {
   static async createUser(req: Request, res: Response) {
     try {
-      const { name, email, birthday, password } = req.body;
+      const { name, email, birthday, confirmPassword, password } = req.body;
       const templateEmail: IMailParams["templateEmail"] = "WELCOME";
-
-      if (!name || !email || !password || !birthday) {
+      console.log(req.body);
+      if (!name || !email || !birthday || !password || !confirmPassword) {
         throw new ValidationError("Todos os campos são obrigatórios.");
       }
 
@@ -18,7 +18,7 @@ export default class UserController {
         throw new ValidationError("Informe um email válido");
       }
 
-      const user = await UserService.createUser({ name, email, birthday, password });
+      const user = await UserService.createUser({ name, email, birthday, password, confirmPassword });
       await EmailService.sendEmail({ to: email, userId: user.id, templateEmail }, user);
 
       SuccessResponse.send(res, 201, "Usuário criado com sucesso!", user);
@@ -30,16 +30,6 @@ export default class UserController {
     try {
       const users = await UserService.getAllUsers();
       SuccessResponse.send(res, 200, "Usuários listados com sucesso", users);
-    } catch (error) {
-      ValidationError.handleError(res, error);
-    }
-  }
-
-  static async getUserById(req: Request, res: Response) {
-    try {
-      const user = await UserService.getUserById(req.params.id);
-      if (!user) throw new ValidationError("Usuário não encontrado");
-      SuccessResponse.send(res, 200, "Usuário encontrado com sucesso", user);
     } catch (error) {
       ValidationError.handleError(res, error);
     }

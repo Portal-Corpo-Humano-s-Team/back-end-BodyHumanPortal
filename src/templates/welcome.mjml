@@ -2,59 +2,74 @@
   <mj-head>
     <mj-title>Bem-vindo(a) ao Portal do Corpo Humano</mj-title>
     <mj-preview>Estamos felizes em tê-lo(a) conosco!</mj-preview>
+    <mj-font name="Urbanist" href=": https://fonts .googleapis.com/css?family=Urbanist"/>
     <mj-font name="Roboto" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
-    <mj-style>
+    <mj-style inline="inline">
       .button { background-color: #4CAF50; color: white; text-decoration: none; font-weight: bold; padding: 10px 20px;
       border-radius: 5px; }
+
+
+  
+
+      body {
+        background-image: url('https://i.postimg.cc/qMmPWHqQ/Bandeiras.png');
+        background-repeat: no-repeat;
+        background-position: top 160px center;
+        background-size:515px;
+      }
+
     </mj-style>
   </mj-head>
   <mj-body>
-    <mj-section background-color="#f4f4f4" padding="20px 0">
-      <mj-column> 
-        <mj-text
-          font-family="Roboto, Arial, sans-serif"
-          align="center"
-          font-size="20px"
-          color="#333"
-          font-weight="bold"
-        >
-          Bem-vindo(a) ao Portal do Corpo Humano!
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
-    <mj-section padding="20px">
+      <mj-section>
+         <mj-column>
+         <mj-image width="1000px" src="https://i.postimg.cc/76SYVjXS/EMAIL-GIGANTE.png" alt="envolpe image" />
+         </mj-column>
+      </mj-section>
+      <mj-section>
+      </mj-section>
+      
+    <mj-section mj-class="banner" padding="10px">
       <mj-column>
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#333"> Olá {{ name }}, </mj-text>
+      <mj-spacer height="25px" />
+          <mj-text align="center" font-weight="bold" font-size="65px" color="#103F65" >
+            Bem vindo,
+          </mj-text>
+          <mj-text align="center" font-weight="bold" font-size="40px" color="#1F527C">
+            {{name}},
+          </mj-text>
+          <mj-text align="center" font-size="35px" color="#103F65">
+              ao
+          </mj-text>
+          <mj-text align="center" color="#103F65" font-weight="500" font-size="40px">
+            Portal do Corpo Humano!
+          </mj-text>
 
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
-          Estamos muito felizes que você decidiu se juntar a nós! O Portal do Corpo Humano é o lugar perfeito para
-          explorar informações detalhadas sobre o corpo humano, suas funcionalidades, e muito mais.
-        </mj-text>
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
-          Aqui estão alguns recursos que você pode aproveitar:
-        </mj-text>
 
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
-          - Acesso a conteúdos exclusivos;
-        </mj-text>
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
-          - Informações detalhadas sobre o corpo humano;
-        </mj-text>
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="16px" color="#555" line-height="1.5">
-          - Ferramentas interativas para aprendizado.
-        </mj-text>
-
-        <mj-button
+        <!-- <mj-button
           href="https://front-end-body-human-portal.vercel.app/"
           font-family="Roboto, Arial, sans-serif"
           background-color="#4CAF50"
           color="white"
           border-radius="5px"
           padding="15px"
-        >
-          Comece a explorar
+        > -->
         </mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="18px" line-height="30px" font-family="Urbanist,Arial">
+          Nós ( a equipe do Portal do Corpo Humano ) estamos muito felizes por você estar aqui! Esperamos que aproveite todos nossos recursos e se divirta com as imagens interativas. Garantimos que todas as nossas informação sejam de qualidade para que você tenha uma experiência completa.
+          <ul>
+          <li>Fique à vontade para adquirir novos conhecimentos sobre o Corpo Humano!</li>
+           <li>Tire dúvidas sobre o conteúdo com a nossa <mj-text>
+            IA 
+           </mj-text></li>
+            <li>Saiba cada detalhe dos sistemas fisiológicos.</li>
+             <li>Utilize nosso suporte para esclarecer suas questões do site.</li>
+          </ul>
+        </mj-text>
       </mj-column>
     </mj-section>
     <mj-section>
@@ -62,16 +77,13 @@
     <mj-image src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHVtcWthbTFzOHF0djh4bDJwM2NrdXh3OHZiN3RsMWo5aWtpazZneCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KF7EeaqPal5LE1ngqw/giphy.gif"/>
   </mj-column>
   </mj-section>
-  <mj-section background-color="#f4f4f4" padding="20px 0">
-      <mj-column>
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="14px" color="#999" align="center">
-          Se você tiver dúvidas, entre em contato conosco via e-mail em
-          <a href="mailto:portalcorpohumano@gmail.com" style="color: #4caf50">portalcorpohumano@gmail.com</a>.
-        </mj-text>
-        <mj-text font-family="Roboto, Arial, sans-serif" font-size="14px" color="#999" align="center">
-          © 2024 Portal do Corpo Humano. Todos os direitos reservados.
-        </mj-text>
-      </mj-column>
-    </mj-section> 
+   <mj-section padding="35px" background-color="#A7E6EB">
+         <mj-column>
+            <mj-text color="#848484" line-height="25px" font-size="20px"  font-weight="bold" font-family="Arial" align="center">
+            Obrigado por escolher o 
+            <span style="color: #103F65; font-weight: bold;">PORTAL DO CORPO HUMANO!</span>
+            </mj-text>
+         </mj-column>
+      </mj-section>
   </mj-body>
 </mjml>

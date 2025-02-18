@@ -1,23 +1,51 @@
 <mjml>
+  </mj-head>
   <mj-body>
     <mj-section>
       <mj-column>
-        <mj-image width="150px" src="logo-url.jpg" alt="Logo" />
-        <mj-text align="center" font-size="20px" color="#333333">Suporte ao Cliente</mj-text>
-        <mj-divider border-color="#DDDDDD" />
-        <mj-text font-size="16px" color="#555555"> Olá, <strong>{{name}}</strong>, </mj-text>
-        <mj-text font-size="16px" color="#555555">
-          Obrigado por entrar em contato conosco. Recebemos sua solicitação e nossa equipe de suporte está trabalhando
-          para resolvê-la o mais rápido possível.
+         <mj-image width="1000px" src="https://i.postimg.cc/76SYVjXS/EMAIL-GIGANTE.png" alt="envolpe image" />
+        <mj-text  font-weight="bold" color="#103F65" font-size="20px" >Oie {{name}}, tudo bem?</mj-text>
+
+        <mj-text font-size="20px" color="#1663A3" font-weight="bold" line-height="28px" >
+          Recebemos sua dúvida, que por sinal é muito interessante! 
+          Ficamos felizes por estar explorando esse mundo vasto que é o corpo humano com a gente.
         </mj-text>
-        <mj-text font-size="16px" color="#555555">
-          Caso tenha mais perguntas, não hesite em nos enviar outra mensagem.
+        <mj-spacer height="16px" />
+        <mj-text font-size="23px" color="#103F65" font-weight="bold" line-height="29px" >
+          Agora sem mais enrolação, vamos a resposta da sua pergunta:
         </mj-text>
-        <mj-button href="mailto:suporte@empresa.com" background-color="#007BFF" color="#ffffff">
-          Enviar outra mensagem
-        </mj-button>
-        <mj-text font-size="12px" color="#888888" align="center"> Atenciosamente, Equipe de Suporte </mj-text>
+        <mj-spacer height="20px" />
+         <mj-text font-size="20px" color="#1663A3" font-weight="bold" line-height="28px" >
+          Sua dúvida:
+        </mj-text>
+         <mj-text font-family="arial" font-size="16px" line-height="28px" >
+            {{question}}
+        </mj-text>
+        <mj-spacer height="15px" />
+         <mj-text font-size="20px" color="#1663A3" font-weight="bold" >
+          Resposta:
+        </mj-text>
+         <mj-text font-family="arial" font-size="16px" line-height="28px" >
+        {{response}}
+        </mj-text>
+        <mj-image src="https://i.ibb.co/C5Gj2C0M/fets.png" alt="" />
+         <mj-text font-size="20px"  font-weight="bold" font-family="Arial"  color="#A7A7A7" align="center">
+               Por favor, não responda esse e-mail
+            </mj-text>
+            <mj-spacer height="1px" />
+            <mj-text font-size="15px" line-height="25px"  font-weight="bold" font-family="Arial"  color="#A7A7A7" align="center">
+               Este e-mail não é uma mensagem de marketing, por isso não há opção de cancelamento para este tipo de mensagem. </mj-text>
+              <mj-text font-size="15px" line-height="25px"  font-weight="bold" font-family="Arial"  color="#A7A7A7" align="center">
+              Atenciosamente, Equipe de Suporte </mj-text>
       </mj-column>
     </mj-section>
+        <mj-section padding="35px" background-color="#A7E6EB">
+         <mj-column>
+            <mj-text color="#848484" line-height="25px" font-size="20px"  font-weight="bold" font-family="Arial" align="center">
+            Obrigado por escolher o 
+            <span style="color: #103F65; font-weight: bold;">PORTAL DO CORPO HUMANO!</span>
+            </mj-text>
+         </mj-column>
+      </mj-section>
   </mj-body>
 </mjml>

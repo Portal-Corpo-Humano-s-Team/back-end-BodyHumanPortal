@@ -1,6 +1,7 @@
 import AuthService from "../service/AuthService";
 import { Request, Response } from "express";
 import { SuccessResponse, ValidationError } from "../validations/CustomValidation";
+import { IAuthRequest } from "../types/authTypes";
 
 export default class AuthController {
   static async login(req: Request, res: Response) {
@@ -9,8 +10,7 @@ export default class AuthController {
 
       const result = await AuthService.login(email, password, googleToken);
 
-      console.log(result);
-      SuccessResponse.send(res, 202, "Token temporário enviado com sucesso", result);
+      SuccessResponse.send(res, 202, "Um código foi enviado para o seu email", result);
     } catch (error) {
       ValidationError.handleError(res, error);
     }
@@ -22,8 +22,20 @@ export default class AuthController {
 
     try {
       const validation = await AuthService.verify2FAToken(email, token);
+      console.log(validation);
+      SuccessResponse.send(res, 200, "Login efetuado com sucesso.", validation);
+    } catch (error) {
+      console.log(error.message);
+      ValidationError.handleError(res, error);
+    }
+  }
 
-      SuccessResponse.send(res, 200, "Token TOTP validado com sucesso.", validation);
+  static async getUserProps(req: IAuthRequest, res: Response) {
+    const { id } = req.user;
+
+    try {
+      const User = await AuthService.getUserProps(id);
+      SuccessResponse.send(res, 200, "Token decodificado com sucesso", User);
     } catch (error) {
       ValidationError.handleError(res, error);
     }

@@ -24,9 +24,11 @@ model User {
   name     String   
   email    String   @unique
   birthday DateTime?  
-  password String? 
-  authMethod EAuthMethod? 
+  createAccount DateTime @default(now())
+  password String?
+  authMethod EAuthMethod
   googleSub String?
+  profilePicture String?
   emails   Email[]  @relation("UserEmails")  
 }
 
